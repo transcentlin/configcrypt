@@ -248,15 +248,15 @@ pip install --upgrade configcrypt
 
 如果您有任何问题或建议，请：
 
-1. [创建Issue](https://github.com/yourusername/configcrypt/issues/new)
-2. [提交Pull Request](https://github.com/yourusername/configcrypt/pulls)
-3. [发送邮件](mailto:your.email@example.com)
+1. [创建Issue](https://github.com/transcentlin/configcrypt/issues/new)
+2. [提交Pull Request](https://github.com/transcentlin/configcrypt/pulls)
+3. [发送邮件](mailto:transcentlin@gmail.com)
 
 感谢您使用ConfigCrypt！
 
 ---
 
-[Unreleased]: https://github.com/yourusername/configcrypt/compare/v1.0.1...HEAD
-[1.0.1]: https://github.com/yourusername/configcrypt/releases/tag/v1.0.1
-[1.0.0]: https://github.com/yourusername/configcrypt/releases/tag/v1.0.0
-[1.0.0-rc1]: https://github.com/yourusername/configcrypt/releases/tag/v1.0.0-rc1
+[Unreleased]: https://github.com/transcentlin/configcrypt/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/transcentlin/configcrypt/releases/tag/v1.0.1
+[1.0.0]: https://github.com/transcentlin/configcrypt/releases/tag/v1.0.0
+[1.0.0-rc1]: https://github.com/transcentlin/configcrypt/releases/tag/v1.0.0-rc1

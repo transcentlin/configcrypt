@@ -78,11 +78,11 @@ cc = "configcrypt.cli:main"
 configcrypt-gui = "configcrypt.gui.app:main"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/configcrypt"
-Documentation = "https://github.com/yourusername/configcrypt#readme"
-Repository = "https://github.com/yourusername/configcrypt"
-"Bug Tracker" = "https://github.com/yourusername/configcrypt/issues"
-Changelog = "https://github.com/yourusername/configcrypt/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/transcentlin/configcrypt"
+Documentation = "https://github.com/transcentlin/configcrypt#readme"
+Repository = "https://github.com/transcentlin/configcrypt"
+"Bug Tracker" = "https://github.com/transcentlin/configcrypt/issues"
+Changelog = "https://github.com/transcentlin/configcrypt/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

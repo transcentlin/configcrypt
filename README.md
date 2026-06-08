@@ -116,7 +116,7 @@ pip install configcrypt
 
 ```bash
 # 克隆仓库
-git clone https://github.com/yourusername/configcrypt.git
+git clone https://github.com/transcentlin/configcrypt.git
 cd configcrypt
 
 # 安装依赖
