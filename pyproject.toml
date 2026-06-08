@@ -1,0 +1,136 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "configcrypt"
+version = "1.0.1"
+description = "A simple, secure, cross-platform file encryption tool with CLI, GUI, and Python API"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "ConfigCrypt Contributors"}
+]
+keywords = [
+    "encryption", 
+    "security", 
+    "configuration", 
+    "vault", 
+    "keychain",
+    "crypto",
+    "fernet",
+    "pbkdf2",
+    "file-encryption",
+    "password-manager"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: End Users/Desktop",
+    "Topic :: Security :: Cryptography",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Archiving :: Backup",
+    "Topic :: Utilities",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Environment :: Console",
+    "Environment :: X11 Applications :: Qt",
+    "Natural Language :: English",
+    "Natural Language :: Chinese (Simplified)",
+]
+
+dependencies = [
+    "cryptography>=41.0.0",
+    "keyring>=24.0.0",
+    "click>=8.1.0",
+    "PySide6>=6.5.0",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "pytest-qt>=4.2.0",
+    "hypothesis>=6.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "safety>=2.0.0",
+    "bandit>=1.7.0",
+]
+
+[project.scripts]
+cc = "configcrypt.cli:main"
+configcrypt-gui = "configcrypt.gui.app:main"
+
+[project.urls]
+Homepage = "https://github.com/yourusername/configcrypt"
+Documentation = "https://github.com/yourusername/configcrypt#readme"
+Repository = "https://github.com/yourusername/configcrypt"
+"Bug Tracker" = "https://github.com/yourusername/configcrypt/issues"
+Changelog = "https://github.com/yourusername/configcrypt/blob/main/CHANGELOG.md"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["configcrypt*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --cov=configcrypt --cov-report=term-missing"
+markers = [
+    "property: Property-based tests using hypothesis",
+    "integration: Integration tests requiring system resources",
+    "benchmark: Performance benchmark tests",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py39"]
+include = '\.pyi?$'
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+    "*/__pycache__/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+
