@@ -10,16 +10,16 @@ flowchart TD
     D --> E[首次提交代码]
     E --> F[关联远程仓库]
     F --> G[推送代码到 GitHub]
-    
+  
     G --> H[创建 Release Tag]
     H --> I[编写 Release Notes]
     I --> J[上传发布文件<br/>ConfigCrypt.exe]
     J --> K[发布 Release]
-    
+  
     K --> L[验证 Release]
     L --> M[更新 README Badge]
     M --> N[发布完成 🎉]
-    
+  
     style A fill:#e1f5e1
     style N fill:#e1f5e1
     style B fill:#d1ecf1
@@ -34,12 +34,15 @@ flowchart TD
 ### Step 1: 创建 GitHub 仓库
 
 #### 1.1 登录 GitHub
+
 访问: https://github.com
 登录您的账号
 
 #### 1.2 创建新仓库
+
 1. 点击右上角 **+** → **New repository**
 2. 填写仓库信息:
+
    - **Repository name**: `configcrypt` 或 `configcrypt-cli`
    - **Description**: `🔐 A simple, secure, cross-platform file encryption tool with CLI, GUI, and Python API`
    - **Public** ✅ （开源项目）或 **Private** （私有项目）
@@ -48,18 +51,61 @@ flowchart TD
      - ❌ Add .gitignore
      - ❌ Choose a license
    - （我们本地已有这些文件）
-
 3. 点击 **Create repository**
 
 #### 1.3 记录仓库地址
+
 创建后会显示仓库 URL，例如:
+
 ```
 https://github.com/transcentlin/configcrypt.git
 ```
 
+#### 1.4 生成 Personal Access Token（重要！）
+
+**为什么需要 Token？**
+
+- GitHub 已不再支持使用密码进行 Git 推送
+- 需要使用 Personal Access Token (PAT) 作为密码
+- 建议在创建仓库后立即生成，后续推送代码时需要使用
+
+**生成步骤：**
+
+1. 访问 GitHub → 右上角头像 → **Settings**
+2. 左侧菜单 → **Developer settings** → **Personal access tokens** → **Tokens (classic)**
+3. 点击 **Generate new token** → **Generate new token (classic)**
+4. 填写表单：
+   - **Note**: `ConfigCrypt Repo Access`（Token 用途说明）
+   - **Expiration**: `90 days` 或 `Custom`（有效期）
+   - **Select scopes**: 勾选 `repo`（完整仓库访问权限）✅
+5. 点击页面底部的 **Generate token** 按钮
+6. **⚠️ 立即复制 Token！**（只显示一次，刷新页面后无法再看到）
+
+**保存 Token：**
+
+- 将 Token 复制到安全的地方（如密码管理器）
+- 后续推送代码时会用到
+- 格式类似：`ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`（40个字符）
+
+**⚠️ 重要提示：**
+
+- Token 等同于密码，不要泄露给他人
+- 不要提交到 Git 仓库
+- 如果泄露，立即在 GitHub 删除该 Token 并重新生成
+
 ---
 
 ### Step 2: 准备本地 Git 仓库
+
+**⚠️ 重要：以下所有命令都必须在项目根目录下执行！**
+
+```bash
+# Windows PowerShell 示例
+cd "D:\同步盘\BaiduSyncdisk\Antigravity\ProjectAsset\核心配置文件加密 260605"
+
+# 或使用相对路径进入项目目录
+cd path\to\your\configcrypt\project
+```
 
 #### 2.1 检查 Git 是否已初始化
 
@@ -91,6 +137,7 @@ type nul > .gitignore
 ```
 
 **编辑 `.gitignore` 内容**:
+
 ```gitignore
 # Python
 __pycache__/
@@ -223,10 +270,12 @@ git push -u origin main
 ```
 
 **首次推送可能需要输入 GitHub 凭据**:
+
 - Username: 您的 GitHub 用户名
 - Password: **Personal Access Token**（不是账号密码）
 
 **如何生成 Personal Access Token**:
+
 1. GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)
 2. 点击 **Generate new token** → **Generate new token (classic)**
 3. 填写:
@@ -338,10 +387,12 @@ pip install configcrypt-cli
 ```
 
 ### 方式二：下载独立可执行文件
+
 - **Windows**: 下载 `ConfigCrypt.exe` (本页面下方 Assets)
 - 双击运行，无需安装 Python
 
 ### 方式三：从源码安装
+
 ```bash
 git clone https://github.com/transcentlin/configcrypt.git
 cd configcrypt
@@ -353,6 +404,7 @@ pip install -e .
 ## 🚀 快速开始
 
 ### CLI 使用
+
 ```bash
 # 初始化主密码
 cc init
@@ -365,6 +417,7 @@ cc decrypt secret.json.enc
 ```
 
 ### GUI 使用
+
 ```bash
 # Windows
 python run.py
@@ -374,6 +427,7 @@ python run.py
 ```
 
 ### Library API 使用
+
 ```python
 from configcrypt import VaultAPI
 
@@ -386,6 +440,7 @@ config = api.decrypt_json("config.json.enc")
 ## 📋 完整功能列表
 
 ### CLI 命令
+
 - `cc init` - 设置主密码
 - `cc encrypt <file>` - 加密文件
 - `cc decrypt <file>` - 解密文件
@@ -393,6 +448,7 @@ config = api.decrypt_json("config.json.enc")
 - `cc reset-password` - 修改主密码
 
 ### GUI 功能
+
 - 文件拖拽加密/解密
 - 欢迎向导（首次启动）
 - 操作历史记录
@@ -400,6 +456,7 @@ config = api.decrypt_json("config.json.enc")
 - 编辑器集成
 
 ### API 方法
+
 - `decrypt_file()` - 解密为字符串
 - `decrypt_json()` - 解密 JSON
 - `decrypt_yaml()` - 解密 YAML
@@ -458,6 +515,7 @@ config = api.decrypt_json("config.json.enc")
 欢迎提交 Issue 和 Pull Request！
 
 **贡献指南**:
+
 1. Fork 本仓库
 2. 创建特性分支 (`git checkout -b feature/amazing-feature`)
 3. 提交更改 (`git commit -m 'Add amazing feature'`)
@@ -475,6 +533,7 @@ config = api.decrypt_json("config.json.enc")
 ## 🙏 致谢
 
 感谢以下开源项目:
+
 - [cryptography](https://cryptography.io/)
 - [keyring](https://github.com/jaraco/keyring)
 - [PySide6](https://www.qt.io/qt-for-python)
@@ -490,6 +549,7 @@ config = api.decrypt_json("config.json.enc")
 ---
 
 **完整更新日志**: [CHANGELOG.md](https://github.com/transcentlin/configcrypt/blob/main/CHANGELOG.md)
+
 ```
 
 ---
@@ -513,11 +573,13 @@ config = api.decrypt_json("config.json.enc")
 
 1. 滚动到底部 **Attach binaries** 部分
 2. 拖拽或点击上传以下文件:
-   ```
+```
+
    ✅ dist/ConfigCrypt.exe
    ✅ dist/configcrypt_cli-1.0.0-py3-none-any.whl  (如果改了包名)
    ✅ dist/configcrypt_cli-1.0.0.tar.gz
-   ```
+
+```
 
 3. 等待上传完成（可能需要几分钟）
 
@@ -573,6 +635,7 @@ config = api.decrypt_json("config.json.enc")
 将所有占位符 URL 替换为实际仓库地址:
 
 **查找替换**:
+
 - `https://github.com/transcentlin/configcrypt` → 实际 URL（已完成）
 - `transcentlin` → 您的 GitHub 用户名（已完成）
 
@@ -591,6 +654,7 @@ git push origin main
 #### 10.1 添加 Topics (标签)
 
 在仓库主页:
+
 1. 点击 **About** 旁边的 ⚙️ (设置图标)
 2. 添加 Topics:
    ```
@@ -651,6 +715,7 @@ twine upload dist/*
 ## 📋 发布检查清单
 
 ### 准备阶段
+
 - [ ] 代码已充分测试
 - [ ] README.md 完整
 - [ ] CHANGELOG.md 已更新
@@ -658,6 +723,7 @@ twine upload dist/*
 - [ ] 版本号正确
 
 ### Git 操作
+
 - [ ] Git 仓库已初始化
 - [ ] .gitignore 已配置
 - [ ] 远程仓库已关联
@@ -665,6 +731,7 @@ twine upload dist/*
 - [ ] Tag 已创建并推送
 
 ### GitHub Release
+
 - [ ] Release 已创建
 - [ ] Release Notes 完整
 - [ ] 文件已上传 (ConfigCrypt.exe 等)
@@ -672,12 +739,14 @@ twine upload dist/*
 - [ ] 下载链接可用
 
 ### 文档更新
+
 - [ ] README.md badges 已添加
 - [ ] GitHub URLs 已更新
 - [ ] 仓库描述已设置
 - [ ] Topics 已添加
 
 ### 验证
+
 - [ ] Release 页面可访问
 - [ ] 文件可正常下载
 - [ ] 可执行文件可运行
@@ -688,17 +757,20 @@ twine upload dist/*
 ## 🎯 发布后推广（可选）
 
 ### 社区分享
+
 - [ ] Reddit - r/Python, r/opensource
 - [ ] Hacker News - Show HN
 - [ ] 掘金/知乎/CSDN - 中文社区
 - [ ] Twitter/X - #Python #OpenSource
 
 ### 项目推广
+
 - [ ] Product Hunt
 - [ ] AlternativeTo
 - [ ] Awesome Python Lists
 
 ### 文档网站
+
 - [ ] GitHub Pages
 - [ ] Read the Docs
 
@@ -709,6 +781,7 @@ twine upload dist/*
 ### Q1: push 被拒绝 "remote contains work that you do not have"
 
 **解决**:
+
 ```bash
 git pull origin main --rebase
 git push origin main
@@ -719,12 +792,14 @@ git push origin main
 **原因**: GitHub 限制单文件最大 100MB
 
 **解决**:
+
 1. 使用 Git LFS (Large File Storage)
 2. 或将大文件放在 Release Assets（不放入 Git）
 
 ### Q3: Personal Access Token 失效
 
 **解决**:
+
 1. 生成新 Token
 2. 更新本地凭据:
    ```bash
@@ -736,6 +811,7 @@ git push origin main
 **原因**: Markdown 格式错误
 
 **解决**:
+
 1. 检查 Markdown 语法
 2. 使用 Preview 预览
 
@@ -749,5 +825,5 @@ git push origin main
 
 ---
 
-**文档生成时间**: 2025-06-08  
+**文档生成时间**: 2025-06-08
 **适用版本**: ConfigCrypt v1.0.0
