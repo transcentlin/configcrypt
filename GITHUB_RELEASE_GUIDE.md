@@ -54,7 +54,7 @@ flowchart TD
 #### 1.3 记录仓库地址
 创建后会显示仓库 URL，例如:
 ```
-https://github.com/yourusername/configcrypt.git
+https://github.com/transcentlin/configcrypt.git
 ```
 
 ---
@@ -205,7 +205,7 @@ git commit -m "Initial commit: ConfigCrypt v1.0.0
 
 ```bash
 # 替换为您的仓库地址
-git remote add origin https://github.com/yourusername/configcrypt.git
+git remote add origin https://github.com/transcentlin/configcrypt.git
 ```
 
 #### 4.2 创建主分支
@@ -343,7 +343,7 @@ pip install configcrypt-cli
 
 ### 方式三：从源码安装
 ```bash
-git clone https://github.com/yourusername/configcrypt.git
+git clone https://github.com/transcentlin/configcrypt.git
 cd configcrypt
 pip install -e .
 ```
@@ -428,11 +428,11 @@ config = api.decrypt_json("config.json.enc")
 
 ## 📚 文档
 
-- [完整文档](https://github.com/yourusername/configcrypt#readme)
-- [安装指南](https://github.com/yourusername/configcrypt#installation)
-- [使用示例](https://github.com/yourusername/configcrypt#usage)
-- [API 文档](https://github.com/yourusername/configcrypt#library-api)
-- [FAQ](https://github.com/yourusername/configcrypt#faq)
+- [完整文档](https://github.com/transcentlin/configcrypt#readme)
+- [安装指南](https://github.com/transcentlin/configcrypt#installation)
+- [使用示例](https://github.com/transcentlin/configcrypt#usage)
+- [API 文档](https://github.com/transcentlin/configcrypt#library-api)
+- [FAQ](https://github.com/transcentlin/configcrypt#faq)
 
 ---
 
@@ -484,12 +484,12 @@ config = api.decrypt_json("config.json.enc")
 
 ## 📞 联系方式
 
-- **Issues**: https://github.com/yourusername/configcrypt/issues
-- **Discussions**: https://github.com/yourusername/configcrypt/discussions
+- **Issues**: https://github.com/transcentlin/configcrypt/issues
+- **Discussions**: https://github.com/transcentlin/configcrypt/discussions
 
 ---
 
-**完整更新日志**: [CHANGELOG.md](https://github.com/yourusername/configcrypt/blob/main/CHANGELOG.md)
+**完整更新日志**: [CHANGELOG.md](https://github.com/transcentlin/configcrypt/blob/main/CHANGELOG.md)
 ```
 
 ---
@@ -536,7 +536,7 @@ config = api.decrypt_json("config.json.enc")
 
 #### 8.1 检查 Release 页面
 
-访问: `https://github.com/yourusername/configcrypt/releases/tag/v1.0.0`
+访问: `https://github.com/transcentlin/configcrypt/releases/tag/v1.0.0`
 
 **验证内容**:
 - ✅ Release 标题正确
@@ -561,11 +561,11 @@ config = api.decrypt_json("config.json.enc")
 在 README.md 顶部添加:
 
 ```markdown
-[![GitHub release](https://img.shields.io/github/v/release/yourusername/configcrypt)](https://github.com/yourusername/configcrypt/releases/latest)
+[![GitHub release](https://img.shields.io/github/v/release/transcentlin/configcrypt)](https://github.com/transcentlin/configcrypt/releases/latest)
 [![PyPI version](https://badge.fury.io/py/configcrypt-cli.svg)](https://badge.fury.io/py/configcrypt-cli)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/yourusername/configcrypt)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/transcentlin/configcrypt)
 ```
 
 #### 9.2 更新 GitHub URL
@@ -573,8 +573,8 @@ config = api.decrypt_json("config.json.enc")
 将所有占位符 URL 替换为实际仓库地址:
 
 **查找替换**:
-- `https://github.com/yourusername/configcrypt` → 实际 URL
-- `yourusername` → 您的 GitHub 用户名
+- `https://github.com/transcentlin/configcrypt` → 实际 URL（已完成）
+- `transcentlin` → 您的 GitHub 用户名（已完成）
 
 #### 9.3 提交更新
 
@@ -728,7 +728,7 @@ git push origin main
 1. 生成新 Token
 2. 更新本地凭据:
    ```bash
-   git remote set-url origin https://YOUR_TOKEN@github.com/yourusername/configcrypt.git
+   git remote set-url origin https://YOUR_TOKEN@github.com/transcentlin/configcrypt.git
    ```
 
 ### Q4: Release 编辑后无法保存
