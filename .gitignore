@@ -162,9 +162,6 @@ PYPIRC_*.md
 README_PYPIRC.md
 QUICK_UPLOAD_GUIDE.md
 
-# Run scripts
-run.py
-
 # Kiro configuration
 .kiro/
 

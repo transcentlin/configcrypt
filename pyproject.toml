@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "configcrypt"
-version = "1.0.1"
+version = "1.0.2"
 description = "A simple, secure, cross-platform file encryption tool with CLI, GUI, and Python API"
 readme = "README.md"
 requires-python = ">=3.8"
