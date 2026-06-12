@@ -138,7 +138,9 @@ class TestEncryptCommand:
     @pytest.fixture
     def temp_file(self):
         """创建临时测试文件"""
-        with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".txt") as f:
+        with tempfile.NamedTemporaryFile(
+            mode="w", delete=False, suffix=".txt", encoding="utf-8"
+        ) as f:
             f.write("测试内容")
             temp_path = Path(f.name)
         yield temp_path

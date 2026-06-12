@@ -24,7 +24,9 @@ class TestVaultFileEncryption:
     @pytest.fixture
     def temp_file(self):
         """创建临时测试文件"""
-        with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".txt") as f:
+        with tempfile.NamedTemporaryFile(
+            mode="w", delete=False, suffix=".txt", encoding="utf-8"
+        ) as f:
             f.write("测试内容\nTest content\n密钥: secret123")
             temp_path = Path(f.name)
         yield temp_path
@@ -146,7 +148,9 @@ class TestVaultFileDecryption:
     def encrypted_file(self, vault):
         """创建加密的测试文件"""
         # 创建临时明文文件
-        with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".txt") as f:
+        with tempfile.NamedTemporaryFile(
+            mode="w", delete=False, suffix=".txt", encoding="utf-8"
+        ) as f:
             f.write("测试内容\nTest content")
             temp_path = Path(f.name)
 
@@ -406,7 +410,7 @@ class TestVaultFileOperationsEdgeCases:
         """测试加密空文件"""
         password = "test_password"
 
-        with tempfile.NamedTemporaryFile(mode="w", delete=False) as f:
+        with tempfile.NamedTemporaryFile(mode="w", delete=False, encoding="utf-8") as f:
             # 创建空文件
             pass
         empty_file = Path(f.name)
