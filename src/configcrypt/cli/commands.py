@@ -217,7 +217,7 @@ def decrypt(file, out, open_editor, editor):
     except InvalidTokenError:
         click.echo("❌ 解密失败: 密码错误或文件已损坏/被篡改")
         click.echo("提示: 请确认:")
-        click.echo("  1. 主密码是否正确（运行 'kv init' 重新设置）")
+        click.echo("  1. 主密码是否正确（运行 'cc init' 重新设置）")
         click.echo("  2. 文件是否完整且未被修改")
         sys.exit(1)
     except DecryptionError as e:

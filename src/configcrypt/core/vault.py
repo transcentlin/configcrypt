@@ -177,7 +177,7 @@ class Vault:
                 raise EncryptionError("未提供密码且未配置KeychainStore")
             password = self._keychain.get_password()
             if password is None:
-                raise EncryptionError("未找到保存的密码，请先运行 'kv init' 或提供密码参数")
+                raise EncryptionError("未找到保存的密码，请先运行 'cc init' 或提供密码参数")
 
         # 确定输出路径
         if output_path is None:
@@ -257,7 +257,7 @@ class Vault:
                 raise DecryptionError("未提供密码且未配置KeychainStore")
             password = self._keychain.get_password()
             if password is None:
-                raise DecryptionError("未找到保存的密码，请先运行 'kv init' 或提供密码参数")
+                raise DecryptionError("未找到保存的密码，请先运行 'cc init' 或提供密码参数")
 
         # 确定输出路径
         if output_path is None:
@@ -345,7 +345,7 @@ class Vault:
                 raise DecryptionError("未提供密码且未配置KeychainStore")
             password = self._keychain.get_password()
             if password is None:
-                raise DecryptionError("未找到保存的密码，请先运行 'kv init' 或提供密码参数")
+                raise DecryptionError("未找到保存的密码，请先运行 'cc init' 或提供密码参数")
 
         try:
             # 读取加密文件
