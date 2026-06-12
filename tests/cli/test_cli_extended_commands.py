@@ -52,7 +52,7 @@ class TestStatusCommand:
                 assert result.exit_code == 0
                 assert "Keychain状态: 可用" in result.output
                 assert "主密码: 未设置" in result.output
-                assert "运行 'kv init' 设置主密码" in result.output
+                assert "运行 'cc init' 设置主密码" in result.output
 
     def test_status_with_keychain_unavailable(self, cli_runner):
         """测试Keychain不可用时的状态"""

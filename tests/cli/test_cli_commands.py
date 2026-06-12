@@ -1,7 +1,7 @@
 """
 CLI命令测试
 
-测试kv init, kv encrypt, kv decrypt命令
+测试cc init, cc encrypt, cc decrypt命令
 """
 
 import pytest
@@ -51,7 +51,7 @@ class TestPasswordStrength:
 
 
 class TestInitCommand:
-    """kv init命令测试"""
+    """cc init命令测试"""
 
     @pytest.fixture
     def runner(self):
@@ -129,7 +129,7 @@ class TestInitCommand:
 
 
 class TestEncryptCommand:
-    """kv encrypt命令测试"""
+    """cc encrypt命令测试"""
 
     @pytest.fixture
     def runner(self):
@@ -211,7 +211,7 @@ class TestEncryptCommand:
 
             assert result.exit_code == 1
             assert "未找到主密码" in result.output
-            assert "kv init" in result.output
+            assert "cc init" in result.output
 
     def test_encrypt_output_exists(self, runner, temp_file):
         """测试输出文件已存在"""
@@ -227,7 +227,7 @@ class TestEncryptCommand:
 
 
 class TestDecryptCommand:
-    """kv decrypt命令测试"""
+    """cc decrypt命令测试"""
 
     @pytest.fixture
     def runner(self):
@@ -286,7 +286,7 @@ class TestDecryptCommand:
 
             assert result.exit_code == 1
             assert "密码错误" in result.output
-            assert "kv init" in result.output
+            assert "cc init" in result.output
 
     def test_decrypt_no_password(self, runner, temp_encrypted_file):
         """测试未设置主密码"""
@@ -298,7 +298,7 @@ class TestDecryptCommand:
 
             assert result.exit_code == 1
             assert "未找到主密码" in result.output
-            assert "kv init" in result.output
+            assert "cc init" in result.output
 
     def test_decrypt_output_exists(self, runner, temp_encrypted_file):
         """测试输出文件已存在"""
