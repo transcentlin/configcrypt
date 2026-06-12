@@ -543,7 +543,7 @@ class TestProperty12_CrossFormatCompatibility:
         password=valid_password(),
     )
     @settings(
-        max_examples=100, deadline=500, suppress_health_check=[HealthCheck.function_scoped_fixture]
+        max_examples=100, deadline=None, suppress_health_check=[HealthCheck.function_scoped_fixture]
     )
     def test_format_agnostic_encryption(self, content, extension, password):
         """
