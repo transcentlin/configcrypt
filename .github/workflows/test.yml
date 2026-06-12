@@ -56,21 +56,21 @@ jobs:
 
     - name: Lint with flake8
       run: |
-        flake8 src/keyvault --count --select=E9,F63,F7,F82 --show-source --statistics
-        flake8 src/keyvault --count --exit-zero --max-complexity=10 --max-line-length=100 --statistics
+        flake8 src/configcrypt --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 src/configcrypt --count --exit-zero --max-complexity=10 --max-line-length=100 --statistics
 
     - name: Check code formatting with black
       run: |
-        black --check src/keyvault tests
+        black --check src/configcrypt tests
 
     - name: Type check with mypy
       run: |
-        mypy src/keyvault --ignore-missing-imports
+        mypy src/configcrypt --ignore-missing-imports
       continue-on-error: true
 
     - name: Run unit tests
       run: |
-        pytest tests/unit -v --cov=keyvault --cov-report=xml --cov-report=term-missing
+        pytest tests/unit -v --cov=configcrypt --cov-report=xml --cov-report=term-missing
       timeout-minutes: 10
 
     - name: Run CLI tests
@@ -221,7 +221,7 @@ jobs:
 
     - name: Run bandit (code security)
       run: |
-        bandit -r src/keyvault -f json -o bandit-report.json || true
+        bandit -r src/configcrypt -f json -o bandit-report.json || true
         cat bandit-report.json
 
     - name: Upload security reports
