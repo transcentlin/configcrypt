@@ -4,7 +4,6 @@
 使用Hypothesis验证系统的12个正确性属性
 """
 
-import os
 import pytest
 import tempfile
 from pathlib import Path
@@ -559,9 +558,10 @@ class TestProperty12_CrossFormatCompatibility:
         with tempfile.TemporaryDirectory() as tmpdir:
             tmp_path = Path(tmpdir)
 
-            # 创建测试文件 (使用newline=''保留原始行尾符)
+            # 创建测试文件 (使用 open() 配合 newline='' 保留原始行尾符)
             input_file = tmp_path / f"test{extension}"
-            input_file.write_text(content, encoding="utf-8", newline="")
+            with open(input_file, "w", encoding="utf-8", newline="") as f:
+                f.write(content)
 
             # 加密 (删除源文件以避免路径冲突)
             encrypted_file = vault.encrypt_file(input_file, password=password, delete_source=True)
@@ -569,8 +569,11 @@ class TestProperty12_CrossFormatCompatibility:
             # 解密
             decrypted_file = vault.decrypt_file(encrypted_file, password=password)
 
-            # 验证内容一致 (使用newline=''保留原始行尾符)
-            assert decrypted_file.read_text(encoding="utf-8", newline="") == content
+            # 验证内容一致 (使用 open() 配合 newline='' 保留原始行尾符)
+            with open(decrypted_file, "r", encoding="utf-8", newline="") as f:
+                decrypted_content = f.read()
+
+            assert decrypted_content == content
 
 
 # 注意：Property 8 (配置格式解析) 和 Property 11 (文件权限) 将在后续任务中实现
