@@ -146,7 +146,7 @@ class TestDecryptWithOpen:
         # 解密并打开
         with patch.object(KeychainStore, "get_password", return_value="testpass123"):
             # 需要patch CLI模块中的EditorLauncher
-            with patch("keyvault.cli.commands.EditorLauncher") as MockEditorLauncher:
+            with patch("configcrypt.cli.commands.EditorLauncher") as MockEditorLauncher:
                 mock_instance = MockEditorLauncher.return_value
                 result = cli_runner.invoke(cli, ["decrypt", str(encrypted_file), "--open"])
 
@@ -166,7 +166,7 @@ class TestDecryptWithOpen:
 
         # 解密并用指定编辑器打开
         with patch.object(KeychainStore, "get_password", return_value="testpass123"):
-            with patch("keyvault.cli.commands.EditorLauncher") as MockEditorLauncher:
+            with patch("configcrypt.cli.commands.EditorLauncher") as MockEditorLauncher:
                 mock_instance = MockEditorLauncher.return_value
                 result = cli_runner.invoke(
                     cli, ["decrypt", str(encrypted_file), "--open", "--editor", "nano"]
@@ -193,7 +193,7 @@ class TestDecryptWithOpen:
         from configcrypt.core.exceptions import EditorNotFoundError
 
         with patch.object(KeychainStore, "get_password", return_value="testpass123"):
-            with patch("keyvault.cli.commands.EditorLauncher") as MockEditorLauncher:
+            with patch("configcrypt.cli.commands.EditorLauncher") as MockEditorLauncher:
                 mock_instance = MockEditorLauncher.return_value
                 mock_instance.open_file.side_effect = EditorNotFoundError("未找到可用的编辑器")
 

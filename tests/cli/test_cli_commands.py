@@ -59,7 +59,7 @@ class TestInitCommand:
 
     def test_init_keychain_unavailable(self, runner):
         """测试Keychain不可用时的处理"""
-        with patch("keyvault.cli.commands.KeychainStore") as MockKeychain:
+        with patch("configcrypt.cli.commands.KeychainStore") as MockKeychain:
             mock_keychain = MockKeychain.return_value
             mock_keychain.is_available.return_value = False
 
@@ -70,7 +70,7 @@ class TestInitCommand:
 
     def test_init_new_password(self, runner):
         """测试设置新密码"""
-        with patch("keyvault.cli.commands.KeychainStore") as MockKeychain:
+        with patch("configcrypt.cli.commands.KeychainStore") as MockKeychain:
             mock_keychain = MockKeychain.return_value
             mock_keychain.is_available.return_value = True
             mock_keychain.get_password.return_value = None
@@ -84,7 +84,7 @@ class TestInitCommand:
 
     def test_init_password_too_short(self, runner):
         """测试密码太短时重新输入"""
-        with patch("keyvault.cli.commands.KeychainStore") as MockKeychain:
+        with patch("configcrypt.cli.commands.KeychainStore") as MockKeychain:
             mock_keychain = MockKeychain.return_value
             mock_keychain.is_available.return_value = True
             mock_keychain.get_password.return_value = None
@@ -100,7 +100,7 @@ class TestInitCommand:
 
     def test_init_weak_password_declined(self, runner):
         """测试拒绝使用弱密码"""
-        with patch("keyvault.cli.commands.KeychainStore") as MockKeychain:
+        with patch("configcrypt.cli.commands.KeychainStore") as MockKeychain:
             mock_keychain = MockKeychain.return_value
             mock_keychain.is_available.return_value = True
             mock_keychain.get_password.return_value = None
@@ -116,7 +116,7 @@ class TestInitCommand:
 
     def test_init_password_exists_cancel(self, runner):
         """测试已有密码时取消操作"""
-        with patch("keyvault.cli.commands.KeychainStore") as MockKeychain:
+        with patch("configcrypt.cli.commands.KeychainStore") as MockKeychain:
             mock_keychain = MockKeychain.return_value
             mock_keychain.is_available.return_value = True
             mock_keychain.get_password.return_value = "existing_password"
@@ -153,7 +153,7 @@ class TestEncryptCommand:
 
     def test_encrypt_success(self, runner, temp_file):
         """测试成功加密文件"""
-        with patch("keyvault.cli.commands.Vault") as MockVault:
+        with patch("configcrypt.cli.commands.Vault") as MockVault:
             mock_vault = MockVault.return_value
             encrypted_path = Path(str(temp_file) + ".enc")
             mock_vault.encrypt_file.return_value = encrypted_path
@@ -167,7 +167,7 @@ class TestEncryptCommand:
 
     def test_encrypt_with_keep_flag(self, runner, temp_file):
         """测试使用--keep选项保留源文件"""
-        with patch("keyvault.cli.commands.Vault") as MockVault:
+        with patch("configcrypt.cli.commands.Vault") as MockVault:
             mock_vault = MockVault.return_value
             encrypted_path = Path(str(temp_file) + ".enc")
             mock_vault.encrypt_file.return_value = encrypted_path
@@ -182,7 +182,7 @@ class TestEncryptCommand:
 
     def test_encrypt_with_custom_output(self, runner, temp_file):
         """测试使用--out选项指定输出路径"""
-        with patch("keyvault.cli.commands.Vault") as MockVault:
+        with patch("configcrypt.cli.commands.Vault") as MockVault:
             mock_vault = MockVault.return_value
             custom_output = Path("/tmp/custom.enc")
             mock_vault.encrypt_file.return_value = custom_output
@@ -203,7 +203,7 @@ class TestEncryptCommand:
 
     def test_encrypt_no_password(self, runner, temp_file):
         """测试未设置主密码时的错误"""
-        with patch("keyvault.cli.commands.Vault") as MockVault:
+        with patch("configcrypt.cli.commands.Vault") as MockVault:
             mock_vault = MockVault.return_value
             mock_vault.encrypt_file.side_effect = EncryptionError("未找到保存的密码")
 
@@ -215,7 +215,7 @@ class TestEncryptCommand:
 
     def test_encrypt_output_exists(self, runner, temp_file):
         """测试输出文件已存在"""
-        with patch("keyvault.cli.commands.Vault") as MockVault:
+        with patch("configcrypt.cli.commands.Vault") as MockVault:
             mock_vault = MockVault.return_value
             mock_vault.encrypt_file.side_effect = EncryptionError("输出文件已存在: test.enc")
 
@@ -249,7 +249,7 @@ class TestDecryptCommand:
 
     def test_decrypt_success(self, runner, temp_encrypted_file):
         """测试成功解密文件"""
-        with patch("keyvault.cli.commands.Vault") as MockVault:
+        with patch("configcrypt.cli.commands.Vault") as MockVault:
             mock_vault = MockVault.return_value
             decrypted_path = temp_encrypted_file.with_suffix("")
             mock_vault.decrypt_file.return_value = decrypted_path
@@ -262,7 +262,7 @@ class TestDecryptCommand:
 
     def test_decrypt_with_custom_output(self, runner, temp_encrypted_file):
         """测试使用--out选项指定输出路径"""
-        with patch("keyvault.cli.commands.Vault") as MockVault:
+        with patch("configcrypt.cli.commands.Vault") as MockVault:
             mock_vault = MockVault.return_value
             custom_output = Path("/tmp/decrypted.txt")
             mock_vault.decrypt_file.return_value = custom_output
@@ -278,7 +278,7 @@ class TestDecryptCommand:
 
     def test_decrypt_wrong_password(self, runner, temp_encrypted_file):
         """测试错误密码"""
-        with patch("keyvault.cli.commands.Vault") as MockVault:
+        with patch("configcrypt.cli.commands.Vault") as MockVault:
             mock_vault = MockVault.return_value
             mock_vault.decrypt_file.side_effect = InvalidTokenError("密码错误")
 
@@ -290,7 +290,7 @@ class TestDecryptCommand:
 
     def test_decrypt_no_password(self, runner, temp_encrypted_file):
         """测试未设置主密码"""
-        with patch("keyvault.cli.commands.Vault") as MockVault:
+        with patch("configcrypt.cli.commands.Vault") as MockVault:
             mock_vault = MockVault.return_value
             mock_vault.decrypt_file.side_effect = DecryptionError("未找到保存的密码")
 
@@ -302,7 +302,7 @@ class TestDecryptCommand:
 
     def test_decrypt_output_exists(self, runner, temp_encrypted_file):
         """测试输出文件已存在"""
-        with patch("keyvault.cli.commands.Vault") as MockVault:
+        with patch("configcrypt.cli.commands.Vault") as MockVault:
             mock_vault = MockVault.return_value
             mock_vault.decrypt_file.side_effect = DecryptionError("输出文件已存在: test.txt")
 
