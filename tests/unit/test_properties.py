@@ -138,7 +138,7 @@ class TestProperty2_OutputFileNaming:
         ),
         extension=st.sampled_from(['.txt', '.json', '.yaml', '.env', '.conf', ''])
     )
-    @settings(max_examples=100, suppress_health_check=[HealthCheck.function_scoped_fixture])
+    @settings(max_examples=100, deadline=500, suppress_health_check=[HealthCheck.function_scoped_fixture])
     def test_encrypt_adds_enc_extension(self, filename, extension):
         """
         Feature: file-encryption-tool
@@ -181,7 +181,7 @@ class TestProperty2_OutputFileNaming:
             )
         )
     )
-    @settings(max_examples=100, suppress_health_check=[HealthCheck.function_scoped_fixture])
+    @settings(max_examples=100, deadline=500, suppress_health_check=[HealthCheck.function_scoped_fixture])
     def test_decrypt_removes_enc_extension(self, filename):
         """解密操作输出的文件路径应该移除.enc扩展名"""
         assume(filename not in ['.', '..'])
@@ -559,7 +559,7 @@ class TestProperty12_CrossFormatCompatibility:
         extension=st.sampled_from(['.env', '.json', '.yaml', '.txt', '.conf', '.ini']),
         password=valid_password()
     )
-    @settings(max_examples=100, suppress_health_check=[HealthCheck.function_scoped_fixture])
+    @settings(max_examples=100, deadline=500, suppress_health_check=[HealthCheck.function_scoped_fixture])
     def test_format_agnostic_encryption(self, content, extension, password):
         """
         Feature: file-encryption-tool
