@@ -103,6 +103,20 @@ markers = [
     "benchmark: Performance benchmark tests",
 ]
 
+[tool.hypothesis]
+phases = ["explicit", "reuse", "generate", "target"]
+
+# Default profile for local development
+[tool.hypothesis.profiles.default]
+max_examples = 100
+deadline = 5000
+
+# CI profile for faster execution
+[tool.hypothesis.profiles.ci]
+max_examples = 20
+deadline = 1000
+derandomize = true
+
 [tool.black]
 line-length = 100
 target-version = ["py39"]
