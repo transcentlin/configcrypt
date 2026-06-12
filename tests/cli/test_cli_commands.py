@@ -325,7 +325,7 @@ class TestCLIIntegration:
         result = runner.invoke(cli, ["--help"])
 
         assert result.exit_code == 0
-        assert "KeyVault" in result.output
+        assert "ConfigCrypt" in result.output
         assert "文件级加密工具" in result.output
         assert "init" in result.output
         assert "encrypt" in result.output
