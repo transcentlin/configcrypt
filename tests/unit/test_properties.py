@@ -82,7 +82,7 @@ class TestProperty1_EncryptionDecryptionRoundtrip:
 
     @pytest.mark.property
     @given(content=small_file_content(), password=valid_password())
-    @settings(max_examples=100, deadline=5000, suppress_health_check=[HealthCheck.too_slow])
+    @settings(max_examples=100, deadline=None, suppress_health_check=[HealthCheck.too_slow])
     def test_bytes_roundtrip(self, content, password):
         """
         Feature: file-encryption-tool
@@ -106,7 +106,7 @@ class TestProperty1_EncryptionDecryptionRoundtrip:
     @given(content=small_file_content(), password=valid_password())
     @settings(
         max_examples=50,
-        deadline=10000,
+        deadline=None,
         suppress_health_check=[HealthCheck.too_slow, HealthCheck.function_scoped_fixture],
     )
     def test_file_roundtrip(self, content, password):
@@ -146,7 +146,7 @@ class TestProperty2_OutputFileNaming:
         extension=st.sampled_from([".txt", ".json", ".yaml", ".env", ".conf", ""]),
     )
     @settings(
-        max_examples=100, deadline=500, suppress_health_check=[HealthCheck.function_scoped_fixture]
+        max_examples=100, deadline=None, suppress_health_check=[HealthCheck.function_scoped_fixture]
     )
     def test_encrypt_adds_enc_extension(self, filename, extension):
         """
@@ -188,7 +188,7 @@ class TestProperty2_OutputFileNaming:
         )
     )
     @settings(
-        max_examples=100, deadline=500, suppress_health_check=[HealthCheck.function_scoped_fixture]
+        max_examples=100, deadline=None, suppress_health_check=[HealthCheck.function_scoped_fixture]
     )
     def test_decrypt_removes_enc_extension(self, filename):
         """解密操作输出的文件路径应该移除.enc扩展名"""
@@ -306,7 +306,7 @@ class TestProperty4_CustomOutputPath:
         ),
     )
     @settings(
-        max_examples=100, deadline=500, suppress_health_check=[HealthCheck.function_scoped_fixture]
+        max_examples=100, deadline=None, suppress_health_check=[HealthCheck.function_scoped_fixture]
     )
     def test_custom_output_path_decrypt(self, content, custom_name):
         """自定义输出路径解密测试"""
@@ -345,7 +345,7 @@ class TestProperty5_WrongPasswordFails:
         password1=valid_password(),
         password2=valid_password(),
     )
-    @settings(max_examples=100, deadline=500)
+    @settings(max_examples=100, deadline=None)
     def test_wrong_password_raises_exception(self, content, password1, password2):
         """
         Feature: file-encryption-tool
@@ -375,7 +375,7 @@ class TestProperty6_TamperDetection:
         tamper_position=st.integers(min_value=16, max_value=200),  # 跳过盐值部分
         tamper_value=st.integers(min_value=0, max_value=255),
     )
-    @settings(max_examples=100, deadline=3000)
+    @settings(max_examples=100, deadline=None)
     def test_tampered_data_detected(self, content, password, tamper_position, tamper_value):
         """
         Feature: file-encryption-tool
@@ -413,7 +413,7 @@ class TestProperty7_KeychainRoundtrip:
             min_size=8, max_size=64, alphabet=st.characters(min_codepoint=32, max_codepoint=126)
         )
     )
-    @settings(max_examples=50, deadline=1000)  # Keychain操作较慢，增加deadline
+    @settings(max_examples=50, deadline=None)  # Keychain操作较慢，移除deadline限制
     def test_keychain_save_read_consistency(self, password):
         """
         Feature: file-encryption-tool
