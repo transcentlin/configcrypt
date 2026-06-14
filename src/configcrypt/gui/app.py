@@ -21,9 +21,9 @@ def main():
     app = QApplication(sys.argv)
 
     # 设置应用程序信息
-    app.setApplicationName("KeyVault")
-    app.setApplicationDisplayName("KeyVault - 文件加密工具")
-    app.setOrganizationName("KeyVault Team")
+    app.setApplicationName("ConfigCrypt")
+    app.setApplicationDisplayName("ConfigCrypt - 文件加密工具")
+    app.setOrganizationName("ConfigCrypt Team")
 
     # 创建主窗口实例（用于获取图标）
     window = MainWindow()

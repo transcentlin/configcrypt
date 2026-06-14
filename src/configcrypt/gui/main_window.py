@@ -359,7 +359,7 @@ class MainWindow(QMainWindow):
 
     def _setup_window(self):
         """设置窗口属性"""
-        self.setWindowTitle("KeyVault - 文件加密工具")
+        self.setWindowTitle("ConfigCrypt - 文件加密工具")
 
         # 设置应用图标
         self.setWindowIcon(self._create_app_icon())
@@ -571,7 +571,7 @@ class MainWindow(QMainWindow):
         title_layout.setSpacing(5)
 
         # 主标题
-        title_label = QLabel("🔐 KeyVault 文件加密工具")
+        title_label = QLabel("🔐 ConfigCrypt 文件加密工具")
         title_font = QFont()
         title_font.setPointSize(24)
         title_font.setBold(True)
@@ -1002,10 +1002,10 @@ class MainWindow(QMainWindow):
         """帮助菜单 - 关于"""
         QMessageBox.about(
             self,
-            "关于 KeyVault",
-            "<h3>KeyVault 文件加密工具</h3>"
+            "关于 ConfigCrypt",
+            "<h3>ConfigCrypt 文件加密工具</h3>"
             "<p>版本 0.1.0</p>"
             "<p>一个安全、易用的文件加密工具</p>"
             "<p>支持 CLI、GUI 和 Python Library 三种使用方式</p>"
-            "<p><br>© 2025 KeyVault Team</p>",
+            "<p><br>© 2025 ConfigCrypt Team</p>",
         )

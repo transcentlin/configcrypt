@@ -380,7 +380,7 @@ class WelcomeWizard(QDialog):
 
     def _setup_ui(self):
         """设置UI组件"""
-        self.setWindowTitle("欢迎使用 KeyVault")
+        self.setWindowTitle("欢迎使用 ConfigCrypt")
         self.setMinimumSize(450, 350)
         self.setModal(True)
 
@@ -391,7 +391,7 @@ class WelcomeWizard(QDialog):
         layout.setSpacing(15)
 
         # 欢迎标题
-        title = QLabel("🎉 欢迎使用 KeyVault")
+        title = QLabel("🎉 欢迎使用 ConfigCrypt")
         title_font = QFont()
         title_font.setPointSize(18)
         title_font.setBold(True)
@@ -400,7 +400,7 @@ class WelcomeWizard(QDialog):
 
         # 说明文字
         description = QLabel(
-            "KeyVault 是一个安全的文件加密工具。\n\n"
+            "ConfigCrypt 是一个安全的文件加密工具。\n\n"
             "首先，请设置一个主密码。\n"
             "主密码将用于加密和解密您的文件。"
         )
@@ -512,7 +512,7 @@ class WelcomeWizard(QDialog):
         try:
             self._keychain.save_password(password)
             QMessageBox.information(
-                self, "设置成功", "主密码已保存！\n现在您可以开始使用 KeyVault 加密文件了。"
+                self, "设置成功", "主密码已保存！\n现在您可以开始使用 ConfigCrypt 加密文件了。"
             )
             self.accept()
         except Exception as e:
